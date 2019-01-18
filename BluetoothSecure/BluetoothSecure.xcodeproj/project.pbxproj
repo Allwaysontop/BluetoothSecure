@@ -11,6 +11,7 @@
 		878544A321F26F1500B0918D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878544A221F26F1500B0918D /* ViewController.swift */; };
 		878544A521F26F1700B0918D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878544A421F26F1700B0918D /* Assets.xcassets */; };
 		878544A821F26F1700B0918D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878544A621F26F1700B0918D /* Main.storyboard */; };
+		87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		878544A721F26F1700B0918D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		878544A921F26F1700B0918D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		878544AA21F26F1700B0918D /* BluetoothSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothSecure.entitlements; sourceTree = "<group>"; };
+		87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				878544A621F26F1700B0918D /* Main.storyboard */,
 				878544A921F26F1700B0918D /* Info.plist */,
 				878544AA21F26F1700B0918D /* BluetoothSecure.entitlements */,
+				87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */,
 			);
 			path = BluetoothSecure;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			files = (
 				878544A321F26F1500B0918D /* ViewController.swift in Sources */,
 				878544A121F26F1500B0918D /* AppDelegate.swift in Sources */,
+				87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

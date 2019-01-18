@@ -10,10 +10,15 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var button: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let colorLayer = CAShapeLayer()
+        colorLayer.masksToBounds = true
+        colorLayer.backgroundColor = NSColor.green.cgColor
+        button.layer?.addSublayer(colorLayer)
     }
 
     override var representedObject: Any? {
@@ -22,6 +27,8 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func test(_ sender: Any) {
+        
+    }
 }
 
