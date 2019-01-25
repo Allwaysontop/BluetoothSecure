@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+protocol BluetoothModelDelegate {
+    func bluetoothNotifier(macAddress: String)
+}
+
+class BluetoothModel {
+    
+    let delegate: BluetoothModelDelegate
+    
+    init(delegate: BluetoothModelDelegate) {
+        self.delegate = delegate
+    }
+}
