@@ -77,10 +77,9 @@
         <scene sceneID="C8x-3L-D7r">
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindow" id="b5N-c0-aDV" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Jzh-Qf-2xh">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="369" y="204" width="116" height="265"/>
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Jzh-Qf-2xh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="369" y="204" width="200" height="100"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
                         <connections>
                             <outlet property="delegate" destination="b5N-c0-aDV" id="2vo-PR-EoS"/>
@@ -92,20 +91,37 @@
                 </windowController>
                 <customObject id="K1l-Ra-5Pb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="163.5"/>
+            <point key="canvasLocation" x="126" y="116"/>
         </scene>
         <!--Preferences View Controller-->
         <scene sceneID="ghP-H0-hNb">
             <objects>
                 <viewController id="hLs-Aw-0Ch" customClass="PreferencesViewController" customModule="BluetoothSecure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GbR-dc-7UN">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ykX-c6-4i1">
+                                <rect key="frame" x="49" y="36" width="77" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iZB-Sd-H8l" id="YOa-vh-Vs5">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Dcu-bu-mei">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="iZB-Sd-H8l"/>
+                                            <menuItem title="Item 2" id="s8C-NE-fY8"/>
+                                            <menuItem title="Item 3" id="9bN-Ew-N90"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="Go1-AI-cSQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260" y="524"/>
+            <point key="canvasLocation" x="126" y="439"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -143,6 +159,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="test:" target="XfG-lQ-9wD" id="Bys-rh-hH1"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
