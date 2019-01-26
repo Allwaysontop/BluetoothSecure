@@ -8,15 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		8737C05821FBA49000A41DF3 /* BluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05721FBA49000A41DF3 /* BluetoothModel.swift */; };
+		8737C05B21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */; };
+		8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */; };
+		8737C05F21FCA4AE00A41DF3 /* DatabaseCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05E21FCA4AE00A41DF3 /* DatabaseCore.swift */; };
 		878544A121F26F1500B0918D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878544A021F26F1500B0918D /* AppDelegate.swift */; };
 		878544A321F26F1500B0918D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878544A221F26F1500B0918D /* ViewController.swift */; };
 		878544A521F26F1700B0918D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878544A421F26F1700B0918D /* Assets.xcassets */; };
 		878544A821F26F1700B0918D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878544A621F26F1700B0918D /* Main.storyboard */; };
+		87A2A33D21FCB7D40068719E /* BluetoothSecure.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 8737C06221FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodeld */; };
 		87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */; };
+		87FEAAF421FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FEAAF221FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift */; };
+		87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FEAAF321FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8737C05721FBA49000A41DF3 /* BluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModel.swift; sourceTree = "<group>"; };
+		8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceImpl.swift; sourceTree = "<group>"; };
+		8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceType.swift; sourceTree = "<group>"; };
+		8737C05E21FCA4AE00A41DF3 /* DatabaseCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCore.swift; sourceTree = "<group>"; };
+		8737C06321FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BluetoothSecure.xcdatamodel; sourceTree = "<group>"; };
 		8785449D21F26F1500B0918D /* BluetoothSecure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothSecure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		878544A021F26F1500B0918D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		878544A221F26F1500B0918D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,6 +35,8 @@
 		878544A921F26F1700B0918D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		878544AA21F26F1700B0918D /* BluetoothSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothSecure.entitlements; sourceTree = "<group>"; };
 		87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		87FEAAF221FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevice+CoreDataClass.swift"; sourceTree = "<group>"; };
+		87FEAAF321FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevice+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,12 +50,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8737C05621FBA47700A41DF3 /* Model */ = {
+		8737C05621FBA47700A41DF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8737C05721FBA49000A41DF3 /* BluetoothModel.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8737C05921FC7F2300A41DF3 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */,
+				8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */,
+				8737C05E21FCA4AE00A41DF3 /* DatabaseCore.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		8737C06021FCA50100A41DF3 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				8737C06121FCA50700A41DF3 /* CoreData */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		8737C06121FCA50700A41DF3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				87FEAAF221FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift */,
+				87FEAAF321FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift */,
+				8737C06221FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		8785449421F26F1400B0918D = {
@@ -110,7 +150,8 @@
 		87DC4D2B21F7771400A72CDC /* Business Layer */ = {
 			isa = PBXGroup;
 			children = (
-				8737C05621FBA47700A41DF3 /* Model */,
+				8737C05921FC7F2300A41DF3 /* Database */,
+				8737C05621FBA47700A41DF3 /* Models */,
 			);
 			path = "Business Layer";
 			sourceTree = "<group>";
@@ -118,6 +159,7 @@
 		87DC4D2C21F7775B00A72CDC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8737C06021FCA50100A41DF3 /* Entities */,
 				87DC4D2721F7765B00A72CDC /* Application Layer */,
 				87DC4D2B21F7771400A72CDC /* Business Layer */,
 				87DC4D2921F776E600A72CDC /* Presentation Layer */,
@@ -196,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A2A33D21FCB7D40068719E /* BluetoothSecure.xcdatamodeld in Resources */,
 				878544A521F26F1700B0918D /* Assets.xcassets in Resources */,
 				878544A821F26F1700B0918D /* Main.storyboard in Resources */,
 			);
@@ -208,10 +251,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */,
+				87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */,
 				878544A321F26F1500B0918D /* ViewController.swift in Sources */,
 				878544A121F26F1500B0918D /* AppDelegate.swift in Sources */,
+				8737C05F21FCA4AE00A41DF3 /* DatabaseCore.swift in Sources */,
 				8737C05821FBA49000A41DF3 /* BluetoothModel.swift in Sources */,
+				87FEAAF421FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift in Sources */,
 				87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */,
+				8737C05B21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +452,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8737C06221FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8737C06321FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodel */,
+			);
+			currentVersion = 8737C06321FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodel */;
+			path = BluetoothSecure.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8785449521F26F1400B0918D /* Project object */;
 }
