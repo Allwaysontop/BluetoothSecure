@@ -27,6 +27,24 @@ class DatabaseServiceImpl: DatabaseServiceType {
         return result
     }
     
+    func achieveDevice(by macAddress: String) -> BluetoothDeviceEntity? {
+        let request: NSFetchRequest<BluetoothDevice> = BluetoothDevice.fetchRequest()
+        let predicate = NSPredicate(format: "macAddress == %@", macAddress)
+        request.predicate = predicate
+        
+        var device: BluetoothDeviceEntity?
+        
+        do {
+            guard let deviceManaged = try databaseCore.persistentContainer.viewContext.fetch(request).first else {
+                return device
+            }
+            device = BluetoothDeviceEntity(managedObject: deviceManaged)
+        } catch {
+            assertionFailure("Database error while achieve by macAddress \(macAddress): \(error.localizedDescription)")
+        }
+        return device
+    }
+    
     func save(devices: [BluetoothDeviceEntity]) {
         databaseCore.persistentContainer.performBackgroundTask { (context) in
             context.mergePolicy = NSMergePolicy.overwrite

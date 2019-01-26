@@ -10,5 +10,6 @@ import Foundation
 
 protocol DatabaseServiceType {
     func fetchAll() -> [BluetoothDeviceEntity]
+    func achieveDevice(by macAddress: String) -> BluetoothDeviceEntity?
     func save(devices: [BluetoothDeviceEntity])
 }
