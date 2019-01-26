@@ -19,11 +19,13 @@ class BluetoothModel {
     let delegate: BluetoothModelDelegate
     private var isMonitoring: Bool = false
     private var notification: IOBluetoothUserNotification?
+    private let databaseService: DatabaseServiceType
     
     // MARK: - Life cycle
     
-    init(delegate: BluetoothModelDelegate) {
+    init(delegate: BluetoothModelDelegate, databaseService: DatabaseServiceType) {
         self.delegate = delegate
+        self.databaseService = databaseService
     }
     
     // MARK: - Registration for notifications
