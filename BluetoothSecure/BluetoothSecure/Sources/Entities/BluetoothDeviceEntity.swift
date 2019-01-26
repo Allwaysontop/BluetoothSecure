@@ -7,24 +7,27 @@
 //
 
 import Foundation
+import IOBluetooth
 
 struct BluetoothDeviceEntity {
-    let id: Int16
     let macAddress: String
     let name: String?
     
     init(managedObject: BluetoothDevice) {
-        self.id = managedObject.id
         self.macAddress = managedObject.macAddress
         self.name = managedObject.name
+    }
+    
+    init(bluetoothDeviceIO: IOBluetoothDevice) {
+        self.macAddress = bluetoothDeviceIO.addressString
+        self.name = bluetoothDeviceIO.name
     }
 }
 
 extension BluetoothDeviceEntity: Equatable {
     
     public static func == (lhs: BluetoothDeviceEntity, rhs: BluetoothDeviceEntity) -> Bool {
-        return lhs.id == rhs.id &&
-        lhs.macAddress == rhs.macAddress &&
+        return lhs.macAddress == rhs.macAddress &&
         lhs.name == rhs.name
     }
 }

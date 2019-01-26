@@ -17,7 +17,6 @@ extension BluetoothDevice {
         return NSFetchRequest<BluetoothDevice>(entityName: "BluetoothDevice")
     }
 
-    @NSManaged public var id: Int16
     @NSManaged public var macAddress: String!
     @NSManaged public var name: String?
 

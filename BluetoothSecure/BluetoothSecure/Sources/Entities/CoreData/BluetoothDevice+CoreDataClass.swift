@@ -20,7 +20,6 @@ public class BluetoothDevice: NSManagedObject {
         
         self.init(entity: entity, insertInto: context)
         
-        self.id = model.id
         self.macAddress = model.macAddress
         self.name = model.name
     }
