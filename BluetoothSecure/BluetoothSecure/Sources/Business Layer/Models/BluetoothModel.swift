@@ -20,9 +20,13 @@ class BluetoothModel {
     private var isMonitoring: Bool = false
     private var notification: IOBluetoothUserNotification?
     
+    // MARK: - Life cycle
+    
     init(delegate: BluetoothModelDelegate) {
         self.delegate = delegate
     }
+    
+    // MARK: - Registration for notifications
     
     func register() {
         IOBluetoothDevice.register(forConnectNotifications: self, selector: #selector(connected))
@@ -31,6 +35,8 @@ class BluetoothModel {
     func unRegister() {
         notification?.unregister()
     }
+    
+    // MARK: - Main features
     
     func fetchPairedDevices() -> [IOBluetoothDevice]? {
         print("Bluetooth devices:")
@@ -53,6 +59,9 @@ class BluetoothModel {
         
         return bluetoothDevices
     }
+    
+    
+    // MARK: - Monitoring
     
     func startMonitoring() {
         isMonitoring = true
