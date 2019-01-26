@@ -11,10 +11,13 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
+    private var windowController: NSWindowController!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        windowController = storyboard.instantiateController(withIdentifier: "StartWindow") as? NSWindowController
+        // If you need to show window
+//        windowController.showWindow(self)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

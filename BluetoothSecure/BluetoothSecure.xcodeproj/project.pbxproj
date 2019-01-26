@@ -162,8 +162,8 @@
 		87DC4D2C21F7775B00A72CDC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8737C06021FCA50100A41DF3 /* Entities */,
 				87DC4D2721F7765B00A72CDC /* Application Layer */,
+				8737C06021FCA50100A41DF3 /* Entities */,
 				87DC4D2B21F7771400A72CDC /* Business Layer */,
 				87DC4D2921F776E600A72CDC /* Presentation Layer */,
 				87DC4D2D21F7787400A72CDC /* Services */,
