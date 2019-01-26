@@ -40,7 +40,7 @@ class BluetoothModel {
     
     // MARK: - Main features
     
-    func fetchPairedDevices() -> [IOBluetoothDevice]? {
+    func fetchCachedDevices() -> [IOBluetoothDevice]? {
         print("Bluetooth devices:")
         guard let devices = IOBluetoothDevice.pairedDevices() else {
             print("No devices")
@@ -62,6 +62,17 @@ class BluetoothModel {
         return bluetoothDevices
     }
     
+    func addToTrusted(devices: [BluetoothDeviceEntity]) {
+        databaseService.save(devices: devices)
+    }
+    
+    func quickAddPairedToTrusted() {
+        guard let bluetoothDevicesIOPaired = fetchCachedDevices()?.filter({ $0.isPaired() }) else {
+            return
+        }
+        let paired = bluetoothDevicesIOPaired.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
+        addToTrusted(devices: paired)
+    }
     
     // MARK: - Monitoring
     
