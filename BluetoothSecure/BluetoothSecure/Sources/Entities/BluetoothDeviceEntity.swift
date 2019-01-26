@@ -31,3 +31,10 @@ extension BluetoothDeviceEntity: Equatable {
         lhs.name == rhs.name
     }
 }
+
+extension BluetoothDeviceEntity: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(macAddress)
+    }
+}
