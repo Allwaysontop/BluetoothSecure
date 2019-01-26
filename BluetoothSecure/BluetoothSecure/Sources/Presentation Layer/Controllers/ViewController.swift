@@ -75,6 +75,35 @@ class ViewController: NSViewController {
         bluetoothModel.unRegister()
         bluetoothModel.stopMonitoring()
     }
+    
+    /// Info alert
+    ///
+    /// - Parameter devices: trusted devices from list
+    private func createPairedDevicesAlert(with devices: [BluetoothDeviceEntity]) {
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "Ok")
+        alert.addButton(withTitle: "Cancel")
+        
+        var messageText = ""
+        devices.forEach { device in
+            let name = device.name ?? device.macAddress
+            messageText = messageText + "\n\(name)"
+        }
+        alert.messageText = messageText
+        let responseTag: NSApplication.ModalResponse = alert.runModal()
+        switch responseTag {
+        case .alertFirstButtonReturn: perform(#selector(okAction))
+        default: break
+        }
+    }
+    
+    private func createInfoAlert(message: String) {
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = message
+        alert.runModal()
+    }
 
     // MARK: - Selectors
     
@@ -90,8 +119,20 @@ class ViewController: NSViewController {
         
     }
     
+    @objc func quickAddToTrustedAction(_ sender: Any?) {
+        guard let pairedDevices = bluetoothModel.achievePairedDevices() else {
+            createInfoAlert(message: "There are no paired devices")
+            return
+        }
+        createPairedDevicesAlert(with: pairedDevices)
+    }
+    
     @objc func quitAction(_ sender: Any?) {
         NSApp.terminate(self)
+    }
+    
+    @objc func okAction() {
+        bluetoothModel.quickAddPairedToTrusted()
     }
     
     // MARK: - Actions
