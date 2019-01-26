@@ -42,13 +42,20 @@ class ViewController: NSViewController {
     
     // MARK: - Private
     private func constructMenu() {
+        // Start
         let startItem = NSMenuItem(title: "Start monitoring", action: #selector(startMonitoringAction), keyEquivalent: "S")
         startItem.target = self
         statusBarMenu.addItem(startItem)
-        statusBarMenu.addItem(NSMenuItem.separator())
+        // Stop
         let stopItem = NSMenuItem(title: "Stop monitoring", action: #selector(stopMonitoringAction), keyEquivalent: "T")
         stopItem.target = self
         statusBarMenu.addItem(stopItem)
+        // Separator
+        statusBarMenu.addItem(NSMenuItem.separator())
+        // Quit
+        let quitItem = NSMenuItem(title: "Quit", action: #selector(quitAction), keyEquivalent: "Q")
+        quitItem.target = self
+        statusBarMenu.addItem(quitItem)
         
         statusBarMenu.delegate = self
 
@@ -78,10 +85,14 @@ class ViewController: NSViewController {
         
     }
     
+    @objc func quitAction(_ sender: Any?) {
+        NSApp.terminate(self)
+    }
+    
     // MARK: - Actions
 
     @IBAction func test(_ sender: Any) {
-        NSApp.terminate(self)
+        
     }
 }
 
