@@ -10,13 +10,14 @@ import Foundation
 import IOBluetooth
 import CoreBluetooth
 
-protocol BluetoothModelDelegate {
-    func bluetoothNotifier(macAddress: String)
+protocol BluetoothModelDelegate: class {
+    func bluetoothNotifier(devices: [BluetoothDeviceEntity])
+    func bluetoothNotifierEmpty()
 }
 
 class BluetoothModel {
     
-    let delegate: BluetoothModelDelegate
+    weak var delegate: BluetoothModelDelegate?
     private var isMonitoring: Bool = false
     private var notification: IOBluetoothUserNotification?
     private let databaseService: DatabaseServiceType
@@ -90,13 +91,22 @@ class BluetoothModel {
         self.notification = sender
         
         if isMonitoring {
-            checkWithSavedDevices()
+            checkWithTrustedDevices()
         }
     }
     
     // MARK: - Private
     
-    private func checkWithSavedDevices() {
+    private func checkWithTrustedDevices() {
+        let trustedDevices = databaseService.fetchAll()
         
+        guard let bluetoothDevicesIO = fetchCachedDevices() else {
+            delegate?.bluetoothNotifierEmpty()
+            return
+        }
+        let cachedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
+        
+        let notTrusted = Array(Set<BluetoothDeviceEntity>(trustedDevices).symmetricDifference(Set(cachedDevices)))
+        delegate?.bluetoothNotifier(devices: notTrusted)
     }
 }

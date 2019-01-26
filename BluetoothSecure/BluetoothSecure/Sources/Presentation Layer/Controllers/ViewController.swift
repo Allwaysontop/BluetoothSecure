@@ -68,6 +68,7 @@ class ViewController: NSViewController {
     }
     
     private func stopMonitoringBluetoohConnections() {
+        bluetoothModel.unRegister()
         bluetoothModel.stopMonitoring()
     }
 
@@ -100,7 +101,11 @@ class ViewController: NSViewController {
 
 extension ViewController: BluetoothModelDelegate {
     
-    func bluetoothNotifier(macAddress: String) {
+    func bluetoothNotifier(devices: [BluetoothDeviceEntity]) {
+        
+    }
+    
+    func bluetoothNotifierEmpty() {
         
     }
 }
