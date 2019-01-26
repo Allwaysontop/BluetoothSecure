@@ -50,6 +50,10 @@ class ViewController: NSViewController {
         let stopItem = NSMenuItem(title: "Stop monitoring", action: #selector(stopMonitoringAction), keyEquivalent: "T")
         stopItem.target = self
         statusBarMenu.addItem(stopItem)
+        // Add quick to trusted
+        let quickAddToTrustedItem = NSMenuItem(title: "Add quick to trusted", action: #selector(quickAddToTrustedAction), keyEquivalent: "A")
+        quickAddToTrustedItem.target = self
+        statusBarMenu.addItem(quickAddToTrustedItem)
         // Separator
         statusBarMenu.addItem(NSMenuItem.separator())
         // Quit
