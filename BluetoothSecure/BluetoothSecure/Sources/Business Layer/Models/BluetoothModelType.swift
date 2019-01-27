@@ -18,4 +18,5 @@ protocol BluetoothModelType {
     func achievePairedDevices() -> [BluetoothDeviceEntity]?
     func addToTrusted(devices: [BluetoothDeviceEntity])
     func quickAddPairedToTrusted()
+    func deleteAllTrustedDevices()
 }

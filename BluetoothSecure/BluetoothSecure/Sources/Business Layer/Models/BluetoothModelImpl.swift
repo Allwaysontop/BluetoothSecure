@@ -80,6 +80,10 @@ class BluetoothModelImpl: BluetoothModelType {
         return paired
     }
     
+    func deleteAllTrustedDevices() {
+        databaseService.deleteAll()
+    }
+    
     // MARK: - Monitoring
     
     func startMonitoring() {

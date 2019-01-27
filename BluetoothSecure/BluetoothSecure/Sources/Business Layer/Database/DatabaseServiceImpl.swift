@@ -57,4 +57,15 @@ class DatabaseServiceImpl: DatabaseServiceType {
             }
         }
     }
+    
+    func deleteAll() {
+        let request: NSFetchRequest = BluetoothDevice.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            try databaseCore.persistentContainer.viewContext.execute(deleteRequest)
+        } catch {
+            assertionFailure("Database error while deleting: \(error.localizedDescription)")
+        }
+    }
 }
