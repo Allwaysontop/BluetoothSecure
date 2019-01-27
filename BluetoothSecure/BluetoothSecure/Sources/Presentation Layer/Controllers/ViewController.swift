@@ -76,12 +76,15 @@ class ViewController: NSViewController {
         bluetoothModel.stopMonitoring()
     }
     
-    /// Info alert
+    // MARK: - Alerts
+    
+    /// List of paired devices alert
     ///
     /// - Parameter devices: trusted devices from list
     private func createPairedDevicesAlert(with devices: [BluetoothDeviceEntity]) {
         let alert = NSAlert()
         alert.alertStyle = .informational
+        alert.messageText = "Add this devices?"
         alert.addButton(withTitle: "Ok")
         alert.addButton(withTitle: "Cancel")
         
@@ -90,7 +93,7 @@ class ViewController: NSViewController {
             let name = device.name ?? device.macAddress
             messageText = messageText + "\n\(name)"
         }
-        alert.messageText = messageText
+        alert.informativeText = messageText
         let responseTag: NSApplication.ModalResponse = alert.runModal()
         switch responseTag {
         case .alertFirstButtonReturn: perform(#selector(okAction))
@@ -98,6 +101,9 @@ class ViewController: NSViewController {
         }
     }
     
+    /// Info alert
+    ///
+    /// - Parameter message: info message
     private func createInfoAlert(message: String) {
         let alert = NSAlert()
         alert.alertStyle = .informational
