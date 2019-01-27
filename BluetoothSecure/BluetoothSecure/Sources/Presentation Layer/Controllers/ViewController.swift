@@ -80,39 +80,50 @@ class ViewController: NSViewController {
         bluetoothModel.stopMonitoring()
     }
     
+    enum AlertType {
+        case info(message: String)
+        case paired(devices: [BluetoothDeviceEntity])
+        case trusted(devices: [BluetoothDeviceEntity])
+    }
+    
     // MARK: - Alerts
     
     /// List of paired devices alert
     ///
     /// - Parameter devices: trusted devices from list
-    private func createPairedDevicesAlert(with devices: [BluetoothDeviceEntity]) {
+    private func createAlert(with type: AlertType) {
         let alert = NSAlert()
         alert.alertStyle = .informational
-        alert.messageText = "Add this devices?"
-        alert.addButton(withTitle: "Ok")
-        alert.addButton(withTitle: "Cancel")
-        
         var messageText = ""
-        devices.forEach { device in
-            let name = device.name ?? device.macAddress
-            messageText = messageText + "\n\(name)"
+        
+        switch type {
+        case .info(let message):
+            alert.messageText = message
+            alert.runModal()
+        case .paired(let devices):
+            alert.messageText = "Add this devices?"
+            alert.addButton(withTitle: "Ok")
+            alert.addButton(withTitle: "Cancel")
+            devices.forEach { device in
+                let name = device.name ?? device.macAddress
+                messageText = messageText + "\n\(name)"
+            }
+            alert.informativeText = messageText
+            let responseTag: NSApplication.ModalResponse = alert.runModal()
+            switch responseTag {
+            case .alertFirstButtonReturn: perform(#selector(okAction))
+            default: break
+            }
+        case .trusted(let devices):
+            alert.messageText = "Trusted devices"
+            alert.addButton(withTitle: "Ok")
+            devices.forEach { device in
+                let name = device.name ?? device.macAddress
+                messageText = messageText + "\n\(name)"
+            }
+            alert.informativeText = messageText
+            alert.runModal()
         }
-        alert.informativeText = messageText
-        let responseTag: NSApplication.ModalResponse = alert.runModal()
-        switch responseTag {
-        case .alertFirstButtonReturn: perform(#selector(okAction))
-        default: break
-        }
-    }
-    
-    /// Info alert
-    ///
-    /// - Parameter message: info message
-    private func createInfoAlert(message: String) {
-        let alert = NSAlert()
-        alert.alertStyle = .informational
-        alert.messageText = message
-        alert.runModal()
     }
 
     // MARK: - Selectors
@@ -131,10 +142,10 @@ class ViewController: NSViewController {
     
     @objc func quickAddToTrustedAction(_ sender: Any?) {
         guard let pairedDevices = bluetoothModel.achievePairedDevices() else {
-            createInfoAlert(message: "There are no paired devices")
+            createAlert(with: .info(message: "There are no paired devices"))
             return
         }
-        createPairedDevicesAlert(with: pairedDevices)
+        createAlert(with: .paired(devices: pairedDevices))
     }
     
     @objc func showTrustedAction() {
@@ -143,6 +154,10 @@ class ViewController: NSViewController {
     
     @objc func okAction() {
         bluetoothModel.quickAddPairedToTrusted()
+    }
+    
+    @objc func quitAction(_ sender: Any?) {
+        NSApp.terminate(self)
     }
     
     // MARK: - Actions
