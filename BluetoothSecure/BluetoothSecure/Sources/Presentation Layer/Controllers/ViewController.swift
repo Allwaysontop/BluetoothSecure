@@ -54,6 +54,10 @@ class ViewController: NSViewController {
         let quickAddToTrustedItem = NSMenuItem(title: "Add quick to trusted", action: #selector(quickAddToTrustedAction), keyEquivalent: "A")
         quickAddToTrustedItem.target = self
         statusBarMenu.addItem(quickAddToTrustedItem)
+        // Show trusted
+        let showTrustedItem = NSMenuItem(title: "Show trusted", action: #selector(showTrustedAction), keyEquivalent: "")
+        showTrustedItem.target = self
+        statusBarMenu.addItem(showTrustedItem)
         // Separator
         statusBarMenu.addItem(NSMenuItem.separator())
         // Quit
@@ -133,8 +137,8 @@ class ViewController: NSViewController {
         createPairedDevicesAlert(with: pairedDevices)
     }
     
-    @objc func quitAction(_ sender: Any?) {
-        NSApp.terminate(self)
+    @objc func showTrustedAction() {
+        createAlert(with: .trusted(devices: bluetoothModel.showTrustedDevices()))
     }
     
     @objc func okAction() {

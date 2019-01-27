@@ -15,6 +15,7 @@ protocol BluetoothModelType {
     func startMonitoring()
     func stopMonitoring()
     func fetchCachedDevices() -> [IOBluetoothDevice]
+    func showTrustedDevices() -> [BluetoothDeviceEntity]
     func achievePairedDevices() -> [BluetoothDeviceEntity]?
     func addToTrusted(devices: [BluetoothDeviceEntity])
     func quickAddPairedToTrusted()

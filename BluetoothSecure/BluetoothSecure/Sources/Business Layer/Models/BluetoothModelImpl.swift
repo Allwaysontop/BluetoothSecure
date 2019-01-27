@@ -80,6 +80,10 @@ class BluetoothModelImpl: BluetoothModelType {
         return paired
     }
     
+    func showTrustedDevices() -> [BluetoothDeviceEntity] {
+        return databaseService.fetchAll()
+    }
+    
     func deleteAllTrustedDevices() {
         databaseService.deleteAll()
     }
