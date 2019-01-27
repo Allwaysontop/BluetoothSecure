@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     
     private let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     private let statusBarMenu = NSMenu()
-    private var bluetoothModel: BluetoothModel!
+    private var bluetoothModel: BluetoothModelType!
     private let databaseService = DatabaseServiceImpl()
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ViewController: NSViewController {
         colorLayer.backgroundColor = NSColor.green.cgColor
         button.layer?.addSublayer(colorLayer)
         
-        bluetoothModel = BluetoothModel(delegate: self, databaseService: databaseService)
+        bluetoothModel = BluetoothModelImpl(delegate: self, databaseService: databaseService)
         
         if let button = statusBarItem.button {
             button.image = #imageLiteral(resourceName: "status bar icon")

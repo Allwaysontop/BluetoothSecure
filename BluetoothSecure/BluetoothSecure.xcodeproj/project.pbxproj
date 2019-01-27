@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8737C05821FBA49000A41DF3 /* BluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05721FBA49000A41DF3 /* BluetoothModel.swift */; };
+		8737C05821FBA49000A41DF3 /* BluetoothModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */; };
 		8737C05B21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */; };
 		8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */; };
 		8737C05F21FCA4AE00A41DF3 /* DatabaseCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05E21FCA4AE00A41DF3 /* DatabaseCore.swift */; };
@@ -18,12 +18,13 @@
 		87A2A33D21FCB7D40068719E /* BluetoothSecure.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 8737C06221FCA6ED00A41DF3 /* BluetoothSecure.xcdatamodeld */; };
 		87A2A33F21FCC7EA0068719E /* BluetoothDeviceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A2A33E21FCC7EA0068719E /* BluetoothDeviceEntity.swift */; };
 		87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */; };
+		87E6E4A121FDE649004E2E25 /* BluetoothModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6E4A021FDE649004E2E25 /* BluetoothModelType.swift */; };
 		87FEAAF421FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FEAAF221FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift */; };
 		87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FEAAF321FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8737C05721FBA49000A41DF3 /* BluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModel.swift; sourceTree = "<group>"; };
+		8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModelImpl.swift; sourceTree = "<group>"; };
 		8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceImpl.swift; sourceTree = "<group>"; };
 		8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceType.swift; sourceTree = "<group>"; };
 		8737C05E21FCA4AE00A41DF3 /* DatabaseCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCore.swift; sourceTree = "<group>"; };
@@ -37,6 +38,7 @@
 		878544AA21F26F1700B0918D /* BluetoothSecure.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothSecure.entitlements; sourceTree = "<group>"; };
 		87A2A33E21FCC7EA0068719E /* BluetoothDeviceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceEntity.swift; sourceTree = "<group>"; };
 		87DC4D2521F28A0500A72CDC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		87E6E4A021FDE649004E2E25 /* BluetoothModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModelType.swift; sourceTree = "<group>"; };
 		87FEAAF221FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevice+CoreDataClass.swift"; sourceTree = "<group>"; };
 		87FEAAF321FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevice+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,7 +57,8 @@
 		8737C05621FBA47700A41DF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8737C05721FBA49000A41DF3 /* BluetoothModel.swift */,
+				8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */,
+				87E6E4A021FDE649004E2E25 /* BluetoothModelType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,12 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E6E4A121FDE649004E2E25 /* BluetoothModelType.swift in Sources */,
 				8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */,
 				87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */,
 				878544A321F26F1500B0918D /* ViewController.swift in Sources */,
 				878544A121F26F1500B0918D /* AppDelegate.swift in Sources */,
 				8737C05F21FCA4AE00A41DF3 /* DatabaseCore.swift in Sources */,
-				8737C05821FBA49000A41DF3 /* BluetoothModel.swift in Sources */,
+				8737C05821FBA49000A41DF3 /* BluetoothModelImpl.swift in Sources */,
 				87FEAAF421FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift in Sources */,
 				87A2A33F21FCC7EA0068719E /* BluetoothDeviceEntity.swift in Sources */,
 				87DC4D2621F28A0500A72CDC /* PreferencesViewController.swift in Sources */,

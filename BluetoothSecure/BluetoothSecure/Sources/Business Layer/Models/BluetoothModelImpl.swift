@@ -15,7 +15,7 @@ protocol BluetoothModelDelegate: class {
     func bluetoothNotifierEmpty()
 }
 
-class BluetoothModel {
+class BluetoothModelImpl: BluetoothModelType {
     
     weak var delegate: BluetoothModelDelegate?
     private var isMonitoring: Bool = false
@@ -41,18 +41,18 @@ class BluetoothModel {
     
     // MARK: - Main features
     
-    func fetchCachedDevices() -> [IOBluetoothDevice]? {
+    func fetchCachedDevices() -> [IOBluetoothDevice] {
         print("Bluetooth devices:")
         guard let devices = IOBluetoothDevice.pairedDevices() else {
             print("No devices")
-            return nil
+            return []
         }
         
-        var bluetoothDevices: [IOBluetoothDevice]?
+        var bluetoothDevices: [IOBluetoothDevice] = []
 
         for item in devices {
             if let device = item as? IOBluetoothDevice {
-                bluetoothDevices?.append(device)
+                bluetoothDevices.append(device)
                 print("Name: \(device.name)")
                 print("Paired?: \(device.isPaired())")
                 print("Connected?: \(device.isConnected())")
@@ -75,9 +75,7 @@ class BluetoothModel {
     }
     
     func achievePairedDevices() -> [BluetoothDeviceEntity]? {
-        guard let bluetoothDevicesIOPaired = fetchCachedDevices()?.filter({ $0.isPaired() }) else {
-            return nil
-        }
+        let bluetoothDevicesIOPaired = fetchCachedDevices().filter({ $0.isPaired() })
         let paired = bluetoothDevicesIOPaired.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
         return paired
     }
@@ -107,7 +105,8 @@ class BluetoothModel {
     private func checkWithTrustedDevices() {
         let trustedDevices = databaseService.fetchAll()
         
-        guard let bluetoothDevicesIO = fetchCachedDevices() else {
+        let bluetoothDevicesIO = fetchCachedDevices()
+        if bluetoothDevicesIO.isEmpty {
             delegate?.bluetoothNotifierEmpty()
             return
         }
