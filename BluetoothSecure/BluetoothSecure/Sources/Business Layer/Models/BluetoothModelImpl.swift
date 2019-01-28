@@ -120,7 +120,7 @@ class BluetoothModelImpl: BluetoothModelType {
         }
         let cachedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
         
-        let notTrusted = Array(Set<BluetoothDeviceEntity>(trustedDevices).symmetricDifference(Set(cachedDevices)))
+        let notTrusted = Array(Set<BluetoothDeviceEntity>(cachedDevices).subtracting(Set(trustedDevices)))
         delegate?.bluetoothNotifier(devices: notTrusted)
     }
 }
