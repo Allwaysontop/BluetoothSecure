@@ -45,12 +45,29 @@ class DatabaseServiceImpl: DatabaseServiceType {
         return device
     }
     
+    /// Save devices to database on background, applying merge
+    ///
+    /// - Parameter devices: devices to store
     func save(devices: [BluetoothDeviceEntity]) {
+        let fetchRequest: NSFetchRequest<BluetoothDevice> = BluetoothDevice.fetchRequest()
         databaseCore.persistentContainer.performBackgroundTask { (context) in
             context.mergePolicy = NSMergePolicy.overwrite
-            _ = devices.map({ BluetoothDevice(model: $0, context: context) })
-            
             do {
+                let savedDevices = try context.fetch(fetchRequest)
+                let savedConvertedDevices = savedDevices.map(BluetoothDeviceEntity.init)
+                
+                var difference: [BluetoothDeviceEntity] = []
+                // If savedConvertedDevices are not empty - apply subtracting
+                if !savedConvertedDevices.isEmpty {
+                    // Returns devices that is not contain in saved, write it to difference and then to database
+                    difference = Array(Set<BluetoothDeviceEntity>(devices).subtracting(Set(savedConvertedDevices)))
+                } else {
+                    // If savedConvertedDevices are empty, subtracting will always return 0 that is not correct,
+                    // so just write it to difference
+                    difference = devices
+                }
+                
+                _ = difference.map({ BluetoothDevice(model: $0, context: context) })
                 try context.save()
             } catch {
                 assertionFailure("Database error while saving: \(error.localizedDescription)")
