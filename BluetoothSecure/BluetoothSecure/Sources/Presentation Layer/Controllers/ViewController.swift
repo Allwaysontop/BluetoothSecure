@@ -58,6 +58,10 @@ class ViewController: NSViewController {
         let showTrustedItem = NSMenuItem(title: "Show trusted", action: #selector(showTrustedAction), keyEquivalent: "")
         showTrustedItem.target = self
         statusBarMenu.addItem(showTrustedItem)
+        // Delete trusted
+        let deleteTrustedItem = NSMenuItem(title: "Delete trusted", action: #selector(deleteTrustedAction), keyEquivalent: "")
+        deleteTrustedItem.target = self
+        statusBarMenu.addItem(deleteTrustedItem)
         // Separator
         statusBarMenu.addItem(NSMenuItem.separator())
         // Quit
@@ -150,6 +154,10 @@ class ViewController: NSViewController {
     
     @objc func showTrustedAction() {
         createAlert(with: .trusted(devices: bluetoothModel.showTrustedDevices()))
+    }
+    
+    @objc func deleteTrustedAction() {
+        bluetoothModel.deleteAllTrustedDevices()
     }
     
     @objc func okAction() {
