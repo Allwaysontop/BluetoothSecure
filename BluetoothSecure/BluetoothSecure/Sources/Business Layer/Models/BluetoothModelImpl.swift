@@ -18,7 +18,6 @@ protocol BluetoothModelDelegate: class {
 class BluetoothModelImpl: BluetoothModelType {
   
   weak var delegate: BluetoothModelDelegate?
-  private var isMonitoring: Bool = false
   private var notification: IOBluetoothUserNotification?
   private let databaseService: DatabaseServiceType
   
@@ -91,21 +90,18 @@ class BluetoothModelImpl: BluetoothModelType {
   // MARK: - Monitoring
   
   func startMonitoring() {
-    isMonitoring = true
+    register()
   }
   
   func stopMonitoring() {
-    isMonitoring = false
+    unRegister()
   }
   
   // MARK: - Selectors
   
   @objc func connected(_ sender: IOBluetoothUserNotification) {
     self.notification = sender
-    
-    if isMonitoring {
-      checkWithTrustedDevices()
-    }
+    checkWithTrustedDevices()
   }
   
   // MARK: - Private
