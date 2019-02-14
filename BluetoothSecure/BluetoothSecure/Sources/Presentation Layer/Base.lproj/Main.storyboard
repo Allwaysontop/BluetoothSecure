@@ -16,11 +16,7 @@
                                 <menu key="submenu" title="Bluetooth Secure" id="AV5-JE-Uo0">
                                     <items>
                                         <menuItem isSeparatorItem="YES" id="2BQ-Gw-oNh"/>
-                                        <menuItem title="Preferences" keyEquivalent="," id="Exl-GA-4kn" userLabel="Test">
-                                            <connections>
-                                                <segue destination="b5N-c0-aDV" kind="show" id="F2e-uG-rmJ"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Preferences" keyEquivalent="," id="Exl-GA-4kn" userLabel="Test"/>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -74,90 +70,6 @@
             <point key="canvasLocation" x="18" y="-106"/>
         </scene>
         <!--Window Controller-->
-        <scene sceneID="C8x-3L-D7r">
-            <objects>
-                <windowController storyboardIdentifier="PreferencesWindow" id="b5N-c0-aDV" sceneMemberID="viewController">
-                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Jzh-Qf-2xh">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <rect key="contentRect" x="369" y="204" width="200" height="100"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-                        <connections>
-                            <outlet property="delegate" destination="b5N-c0-aDV" id="2vo-PR-EoS"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="hLs-Aw-0Ch" kind="relationship" relationship="window.shadowedContentViewController" id="Qtc-sb-nxg"/>
-                    </connections>
-                </windowController>
-                <customObject id="K1l-Ra-5Pb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="126" y="116"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="lsB-2e-0LE">
-            <objects>
-                <windowController storyboardIdentifier="InfoWindow" id="P7F-AR-DZE" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cTm-KE-Zol">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="163" y="199" width="350" height="185"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-                        <connections>
-                            <outlet property="delegate" destination="P7F-AR-DZE" id="2bX-6b-we1"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="XLF-cs-Fcn" kind="relationship" relationship="window.shadowedContentViewController" id="6iI-9d-ATs"/>
-                    </connections>
-                </windowController>
-                <customObject id="0fa-R3-RUQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="460" y="70.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yHo-IC-EnK">
-            <objects>
-                <viewController id="XLF-cs-Fcn" sceneMemberID="viewController">
-                    <view key="view" id="yPO-yI-Q0x">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="yo9-wU-a7F" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="460" y="415"/>
-        </scene>
-        <!--Preferences View Controller-->
-        <scene sceneID="ghP-H0-hNb">
-            <objects>
-                <viewController id="hLs-Aw-0Ch" customClass="PreferencesViewController" customModule="BluetoothSecure" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="GbR-dc-7UN">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ykX-c6-4i1">
-                                <rect key="frame" x="49" y="36" width="77" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iZB-Sd-H8l" id="YOa-vh-Vs5">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="Dcu-bu-mei">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="iZB-Sd-H8l"/>
-                                            <menuItem title="Item 2" id="s8C-NE-fY8"/>
-                                            <menuItem title="Item 3" id="9bN-Ew-N90"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="Go1-AI-cSQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="126" y="439"/>
-        </scene>
-        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="StartWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
@@ -185,23 +97,7 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThH-6X-rVj">
-                                <rect key="frame" x="200" y="127" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vTF-gO-Kcb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="test:" target="XfG-lQ-9wD" id="Bys-rh-hH1"/>
-                                </connections>
-                            </button>
-                        </subviews>
                     </view>
-                    <connections>
-                        <outlet property="button" destination="ThH-6X-rVj" id="CmV-2O-d1v"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
