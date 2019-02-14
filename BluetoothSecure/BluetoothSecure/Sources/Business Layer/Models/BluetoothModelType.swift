@@ -12,7 +12,7 @@ import IOBluetooth
 protocol BluetoothModelType {
     func startMonitoring()
     func stopMonitoring()
-    func fetchPairedDevices() -> [IOBluetoothDevice]
+    func fetchPairedDevices() -> [IOBluetoothDevice]?
     func showTrustedDevices() -> [BluetoothDeviceEntity]
     func achievePairedDevices() -> [BluetoothDeviceEntity]?
     func addToTrusted(devices: [BluetoothDeviceEntity])
