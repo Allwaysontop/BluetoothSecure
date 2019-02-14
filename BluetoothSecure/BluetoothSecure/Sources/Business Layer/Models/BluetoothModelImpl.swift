@@ -41,7 +41,7 @@ class BluetoothModelImpl: BluetoothModelType {
   
   // MARK: - Main features
   
-  func fetchCachedDevices() -> [IOBluetoothDevice] {
+  func fetchPairedDevices() -> [IOBluetoothDevice] {
     print("Bluetooth devices:")
     guard let devices = IOBluetoothDevice.pairedDevices() else {
       print("No devices")
@@ -75,7 +75,7 @@ class BluetoothModelImpl: BluetoothModelType {
   }
   
   func achievePairedDevices() -> [BluetoothDeviceEntity]? {
-    let bluetoothDevicesIOPaired = fetchCachedDevices().filter({ $0.isPaired() })
+    let bluetoothDevicesIOPaired = fetchPairedDevices().filter({ $0.isPaired() })
     let paired = bluetoothDevicesIOPaired.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     return paired
   }
@@ -113,7 +113,7 @@ class BluetoothModelImpl: BluetoothModelType {
   private func checkWithTrustedDevices() {
     let trustedDevices = databaseService.fetchAll()
     
-    let bluetoothDevicesIO = fetchCachedDevices()
+    let bluetoothDevicesIO = fetchPairedDevices()
     if bluetoothDevicesIO.isEmpty {
       delegate?.bluetoothNotifierEmpty()
       return
