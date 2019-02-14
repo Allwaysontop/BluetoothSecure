@@ -11,8 +11,8 @@ import IOBluetooth
 import CoreBluetooth
 
 protocol BluetoothModelDelegate: class {
-  func bluetoothNotifier(devices: [BluetoothDeviceEntity])
-  func bluetoothNotifierEmpty()
+  func bluetoothNotifier(_ model: BluetoothModelImpl, devices: [BluetoothDeviceEntity])
+  func bluetoothNotifierEmpty(_ model: BluetoothModelImpl)
 }
 
 class BluetoothModelImpl: BluetoothModelType {
@@ -115,15 +115,17 @@ class BluetoothModelImpl: BluetoothModelType {
     
     let bluetoothDevicesIO = fetchPairedDevices()
     if bluetoothDevicesIO.isEmpty {
-      delegate?.bluetoothNotifierEmpty()
+      delegate?.bluetoothNotifierEmpty(self)
       return
     }
-    let cachedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
+    let pairedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     
-    let notTrusted = Array(Set<BluetoothDeviceEntity>(cachedDevices).subtracting(Set(trustedDevices)))
+    let notTrustedDevices = Array(Set<BluetoothDeviceEntity>(pairedDevices).subtracting(Set(trustedDevices)))
     
-    if !notTrusted.isEmpty {
-      delegate?.bluetoothNotifier(devices: notTrusted)
+    if !notTrustedDevices.isEmpty {
+      delegate?.bluetoothNotifier(self, devices: notTrustedDevices)
+    } else {
+      delegate?.bluetoothNotifierEmpty(self)
     }
   }
 }

@@ -178,20 +178,20 @@ class ViewController: NSViewController {
 // MARK: - BluetoothModelDelegate
 
 extension ViewController: BluetoothModelDelegate {
+  
+  func bluetoothNotifierEmpty(_ model: BluetoothModelImpl) {
+    createAlert(with: .info(message: "Some device connected but not defined"))
+  }
+  
+  func bluetoothNotifier(_ model: BluetoothModelImpl, devices: [BluetoothDeviceEntity]) {
     
-    func bluetoothNotifier(devices: [BluetoothDeviceEntity]) {
-        
-    }
-    
-    func bluetoothNotifierEmpty() {
-        
-    }
+  }
 }
 
 extension ViewController: NSMenuDelegate {
     
     func menuWillOpen(_ menu: NSMenu) {
-        print("menu opens")
+//        print("menu opens")
     }
 }
 
