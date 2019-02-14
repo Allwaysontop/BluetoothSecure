@@ -64,7 +64,9 @@ class BluetoothModelImpl: BluetoothModelType {
   }
   
   func achievePairedDevices() -> [BluetoothDeviceEntity]? {
-    let bluetoothDevicesIOPaired = fetchPairedDevices().filter({ $0.isPaired() })
+    guard let bluetoothDevicesIOPaired = fetchPairedDevices()?.filter({ $0.isPaired() }) else {
+      return nil
+    }
     let paired = bluetoothDevicesIOPaired.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     return paired
   }
@@ -107,13 +109,12 @@ class BluetoothModelImpl: BluetoothModelType {
   private func checkWithTrustedDevices() {
     let trustedDevices = databaseService.fetchAll()
     
-    let bluetoothDevicesIO = fetchPairedDevices()
-    if bluetoothDevicesIO.isEmpty {
+    guard let bluetoothDevicesIO = fetchPairedDevices(), !bluetoothDevicesIO.isEmpty else {
       delegate?.bluetoothNotifierEmpty(self)
       return
     }
-    let pairedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     
+    let pairedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     let notTrustedDevices = Array(Set<BluetoothDeviceEntity>(pairedDevices).subtracting(Set(trustedDevices)))
     
     if !notTrustedDevices.isEmpty {
