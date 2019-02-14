@@ -10,8 +10,6 @@ import Foundation
 import IOBluetooth
 
 protocol BluetoothModelType {
-    func register()
-    func unRegister()
     func startMonitoring()
     func stopMonitoring()
     func fetchPairedDevices() -> [IOBluetoothDevice]

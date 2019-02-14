@@ -28,23 +28,13 @@ class BluetoothModelImpl: BluetoothModelType {
     self.databaseService = databaseService
   }
   
-  // MARK: - Registration for notifications
-  
-  func register() {
-    IOBluetoothDevice.register(forConnectNotifications: self, selector: #selector(connected))
-  }
-  
-  func unRegister() {
-    notification?.unregister()
-  }
-  
   // MARK: - Main features
   
-  func fetchPairedDevices() -> [IOBluetoothDevice] {
+  func fetchPairedDevices() -> [IOBluetoothDevice]? {
     print("Bluetooth devices:")
     guard let devices = IOBluetoothDevice.pairedDevices() else {
       print("No devices")
-      return []
+      return nil
     }
     
     var bluetoothDevices: [IOBluetoothDevice] = []
@@ -105,6 +95,14 @@ class BluetoothModelImpl: BluetoothModelType {
   }
   
   // MARK: - Private
+  
+  private func register() {
+    IOBluetoothDevice.register(forConnectNotifications: self, selector: #selector(connected))
+  }
+  
+  private func unRegister() {
+    notification?.unregister()
+  }
   
   private func checkWithTrustedDevices() {
     let trustedDevices = databaseService.fetchAll()
