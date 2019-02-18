@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870908AC2218622800C97487 /* LoggerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870908AB2218622800C97487 /* LoggerImpl.swift */; };
 		8737C05821FBA49000A41DF3 /* BluetoothModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */; };
 		8737C05B21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */; };
 		8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		870908AB2218622800C97487 /* LoggerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerImpl.swift; sourceTree = "<group>"; };
 		8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModelImpl.swift; sourceTree = "<group>"; };
 		8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceImpl.swift; sourceTree = "<group>"; };
 		8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceType.swift; sourceTree = "<group>"; };
@@ -54,11 +56,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8737C05621FBA47700A41DF3 /* Models */ = {
+		870908A9221861F400C97487 /* BluetoothModel */ = {
 			isa = PBXGroup;
 			children = (
 				8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */,
 				87E6E4A021FDE649004E2E25 /* BluetoothModelType.swift */,
+			);
+			path = BluetoothModel;
+			sourceTree = "<group>";
+		};
+		870908AA2218621700C97487 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				870908AB2218622800C97487 /* LoggerImpl.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		8737C05621FBA47700A41DF3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				870908A9221861F400C97487 /* BluetoothModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +195,7 @@
 		87DC4D2D21F7787400A72CDC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				870908AA2218621700C97487 /* Logger */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87E6E4A121FDE649004E2E25 /* BluetoothModelType.swift in Sources */,
+				870908AC2218622800C97487 /* LoggerImpl.swift in Sources */,
 				8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */,
 				87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */,
 				878544A321F26F1500B0918D /* ViewController.swift in Sources */,

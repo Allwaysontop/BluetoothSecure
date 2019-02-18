@@ -8,7 +8,6 @@
 
 import Foundation
 import IOBluetooth
-import CoreBluetooth
 
 protocol BluetoothModelDelegate: class {
   func bluetoothNotifier(_ model: BluetoothModelImpl, devices: [BluetoothDeviceEntity])
@@ -109,18 +108,21 @@ class BluetoothModelImpl: BluetoothModelType {
   private func checkWithTrustedDevices() {
     let trustedDevices = databaseService.fetchAll()
     
-    guard let bluetoothDevicesIO = fetchPairedDevices(), !bluetoothDevicesIO.isEmpty else {
+    guard let pairedDevices = fetchPairedDevices(), !pairedDevices.isEmpty else {
       delegate?.bluetoothNotifierEmpty(self)
       return
     }
     
-    let pairedDevices = bluetoothDevicesIO.map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
-    let notTrustedDevices = Array(Set<BluetoothDeviceEntity>(pairedDevices).subtracting(Set(trustedDevices)))
+    Logger().writeToFile(devices: pairedDevices)
+    
+    let connectedDevices = pairedDevices
+      .filter({ $0.isConnected() })
+      .map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
+    
+    let notTrustedDevices = Array(Set<BluetoothDeviceEntity>(connectedDevices).subtracting(Set(trustedDevices)))
     
     if !notTrustedDevices.isEmpty {
       delegate?.bluetoothNotifier(self, devices: notTrustedDevices)
-    } else {
-      delegate?.bluetoothNotifierEmpty(self)
     }
   }
 }
