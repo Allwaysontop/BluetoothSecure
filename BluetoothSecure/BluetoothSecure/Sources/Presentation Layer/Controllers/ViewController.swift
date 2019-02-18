@@ -47,10 +47,12 @@ class ViewController: NSViewController {
     let stopItem = NSMenuItem(title: "Stop monitoring", action: #selector(stopMonitoringAction), keyEquivalent: "T")
     stopItem.target = self
     statusBarMenu.addItem(stopItem)
+    statusBarMenu.addItem(NSMenuItem.separator())
     // Add quick to trusted
-    let quickAddToTrustedItem = NSMenuItem(title: "Add quick to trusted", action: #selector(quickAddToTrustedAction), keyEquivalent: "A")
+    let quickAddToTrustedItem = NSMenuItem(title: "Quick add to trusted", action: #selector(quickAddToTrustedAction), keyEquivalent: "A")
     quickAddToTrustedItem.target = self
     statusBarMenu.addItem(quickAddToTrustedItem)
+    statusBarMenu.addItem(NSMenuItem.separator())
     // Show trusted
     let showTrustedItem = NSMenuItem(title: "Show trusted", action: #selector(showTrustedAction), keyEquivalent: "")
     showTrustedItem.target = self
@@ -61,6 +63,18 @@ class ViewController: NSViewController {
     statusBarMenu.addItem(deleteTrustedItem)
     // Separator
     statusBarMenu.addItem(NSMenuItem.separator())
+    // Log
+    let logItem = NSMenuItem(title: "Log", action: #selector(logAction), keyEquivalent: "")
+    logItem.target = self
+    statusBarMenu.addItem(logItem)
+    let logMenu = NSMenu(title: "Log")
+    statusBarMenu.setSubmenu(logMenu, for: logItem)
+    let showLogItem = NSMenuItem(title: "Show log", action: #selector(showLogAction), keyEquivalent: "")
+    showLogItem.target = self
+    logMenu.addItem(showLogItem)
+    let clearLogItem = NSMenuItem(title: "Clear log", action: #selector(clearLogAction), keyEquivalent: "")
+    clearLogItem.target = self
+    logMenu.addItem(clearLogItem)
     // Quit
     let quitItem = NSMenuItem(title: "Quit", action: #selector(quitAction), keyEquivalent: "Q")
     quitItem.target = self
@@ -166,6 +180,14 @@ class ViewController: NSViewController {
   
   @objc func deleteTrustedAction() {
     bluetoothModel.deleteAllTrustedDevices()
+  }
+  
+  @objc func logAction() {
+    print("Log action")
+  }
+  
+  @objc func showLogAction() {
+    
   }
   
   @objc func clearLogAction() {
