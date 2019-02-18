@@ -168,6 +168,12 @@ class ViewController: NSViewController {
     bluetoothModel.deleteAllTrustedDevices()
   }
   
+  @objc func clearLogAction() {
+    let result = Logger().deleteLog()
+    let message: String = result ? "Log cleared successfully" : "Something went wrong while log clearing"
+    createAlert(with: .info(message: message))
+  }
+  
   @objc func okAction() {
     bluetoothModel.quickAddPairedToTrusted()
   }

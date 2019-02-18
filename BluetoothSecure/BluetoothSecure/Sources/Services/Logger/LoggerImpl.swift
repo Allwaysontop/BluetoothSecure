@@ -33,6 +33,24 @@ class Logger {
     }
   }
   
+  func deleteLog() -> Bool {
+    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+    
+    guard let fileUrl = documentsUrl.appendingPathComponent("Connection_log.txt") else {
+      return false
+    }
+    
+    do {
+      try FileManager.default.removeItem(at: fileUrl)
+      return true
+    } catch {
+      print(error.localizedDescription)
+      return false
+    }
+  }
+  
+  // MARK: - Privage
+  
   private func writeToFile(string: String) {
     // get URL to the the documents directory in the sandbox
     let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
