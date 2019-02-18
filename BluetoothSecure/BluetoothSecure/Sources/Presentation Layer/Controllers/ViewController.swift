@@ -195,7 +195,7 @@ class ViewController: NSViewController {
   }
   
   @objc func clearLogAction() {
-    let result = Logger().deleteLog()
+    let result = Logger().deleteLog(Constants.Logger.fileName)
     let message: String = result ? "Log cleared successfully" : "Something went wrong while log clearing"
     createAlert(with: .info(message: message))
   }

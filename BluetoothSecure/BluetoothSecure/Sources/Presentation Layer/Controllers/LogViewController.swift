@@ -13,4 +13,11 @@ class LogViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
+  
+  func createLogView() {
+    let scrollView = NSScrollView(frame: self.view.bounds)
+    self.view.addSubview(scrollView)
+    
+    
+  }
 }

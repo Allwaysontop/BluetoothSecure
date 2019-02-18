@@ -113,7 +113,7 @@ class BluetoothModelImpl: BluetoothModelType {
       return
     }
     
-    Logger().writeToFile(devices: pairedDevices)
+    Logger().writeToFile(Constants.Logger.fileName, devices: pairedDevices)
     
     let connectedDevices = pairedDevices
       .filter({ $0.isConnected() })

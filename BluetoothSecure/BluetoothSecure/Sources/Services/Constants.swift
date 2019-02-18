@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct Constants {
+  struct Logger {
+    static let fileName: String = "Connection_log"
+  }
+}

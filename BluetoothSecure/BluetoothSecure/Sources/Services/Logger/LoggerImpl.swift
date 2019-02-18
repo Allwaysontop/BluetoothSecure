@@ -11,7 +11,7 @@ import IOBluetooth
 
 class Logger {
   
-  func writeToFile(devices: [IOBluetoothDevice]) {
+  func writeToFile(_ fileName: String, devices: [IOBluetoothDevice]) {
     var resultString = ""
     
     for device in devices {
@@ -29,14 +29,14 @@ class Logger {
     }
     
     if !resultString.isEmpty {
-      writeToFile(string: resultString)
+      writeToFile(fileName, valueString: resultString)
     }
   }
   
-  func deleteLog() -> Bool {
+  func deleteLog(_ fileName: String) -> Bool {
     let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
     
-    guard let fileUrl = documentsUrl.appendingPathComponent("Connection_log.txt") else {
+    guard let fileUrl = documentsUrl.appendingPathComponent("\(fileName).txt") else {
       return false
     }
     
@@ -49,20 +49,24 @@ class Logger {
     }
   }
   
+  func readFromFile(_ fileName: String) {
+    
+  }
+  
   // MARK: - Privage
   
-  private func writeToFile(string: String) {
+  private func writeToFile(_ fileName: String, valueString: String) {
     // get URL to the the documents directory in the sandbox
     let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
     
     // add a filename
-    guard let fileUrl = documentsUrl.appendingPathComponent("Connection_log.txt") else {
+    guard let fileUrl = documentsUrl.appendingPathComponent("\(fileName).txt") else {
       return
     }
     
     // write to it
     do {
-      try string.write(to: fileUrl, atomically: true, encoding: String.Encoding.utf8)
+      try valueString.write(to: fileUrl, atomically: true, encoding: String.Encoding.utf8)
     } catch {
       print(error.localizedDescription)
     }
