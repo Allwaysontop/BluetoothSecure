@@ -15,8 +15,10 @@ class Logger {
     var resultString = ""
     
     for device in devices {
-      let date = "Date: \(Date().timeIntervalSince1970)"
-      resultString.append(date)
+      let formatter = DateFormatter()
+      formatter.dateFormat = "dd.MM.yyyy"
+      let date = formatter.string(from: Date())
+      resultString.append("Date: \(date)")
       
       if let name = device.name {
         resultString.append("\nName: \(name)")
@@ -34,9 +36,7 @@ class Logger {
   }
   
   func deleteLog(_ fileName: String) -> Bool {
-    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
-    
-    guard let fileUrl = documentsUrl.appendingPathComponent("\(fileName).txt") else {
+    guard let fileUrl = getFilePath(by: fileName) else {
       return false
     }
     
@@ -49,18 +49,24 @@ class Logger {
     }
   }
   
-  func readFromFile(_ fileName: String) {
+  func readFromFile(_ fileName: String) -> [String]? {
+    guard let fileUrl = getFilePath(by: fileName) else {
+      return nil
+    }
     
+    do {
+      let result = try String(contentsOf: fileUrl)
+      let results = result.components(separatedBy: CharacterSet.newlines)
+      return results
+    } catch {
+        return nil
+    }
   }
   
   // MARK: - Privage
   
   private func writeToFile(_ fileName: String, valueString: String) {
-    // get URL to the the documents directory in the sandbox
-    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
-    
-    // add a filename
-    guard let fileUrl = documentsUrl.appendingPathComponent("\(fileName).txt") else {
+    guard let fileUrl = getFilePath(by: fileName) else {
       return
     }
     
@@ -70,5 +76,15 @@ class Logger {
     } catch {
       print(error.localizedDescription)
     }
+  }
+  
+  private func getFilePath(by name: String) -> URL? {
+    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+    
+    // add a filename
+    guard let fileUrl = documentsUrl.appendingPathComponent("\(name).txt") else {
+      return nil
+    }
+    return fileUrl
   }
 }
