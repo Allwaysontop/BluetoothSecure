@@ -11,6 +11,7 @@ import Cocoa
 class ViewController: NSViewController {
   // MARK: - Property
   private let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+  private var logWindowController: NSWindowController?
   private let statusBarMenu = NSMenu()
   private var bluetoothModel: BluetoothModelType!
   private let databaseService = DatabaseServiceImpl()
@@ -187,7 +188,10 @@ class ViewController: NSViewController {
   }
   
   @objc func showLogAction() {
-    
+    let storyboard = NSStoryboard(name: "Main", bundle: nil)
+    let logWindowController = storyboard.instantiateController(withIdentifier: "LogWindow") as? NSWindowController
+    self.logWindowController = logWindowController
+    logWindowController?.showWindow(self)
   }
   
   @objc func clearLogAction() {

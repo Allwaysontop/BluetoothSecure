@@ -67,7 +67,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="-106"/>
+            <point key="canvasLocation" x="8" y="-80"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -89,6 +89,40 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-84" y="166"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="2Jy-oB-g2l">
+            <objects>
+                <windowController storyboardIdentifier="LogWindow" id="89X-g8-leD" sceneMemberID="viewController">
+                    <window key="window" title="Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZH7-ee-D51">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="128" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                        <connections>
+                            <outlet property="delegate" destination="89X-g8-leD" id="pv7-Ys-Umo"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="haM-TG-2IE" kind="relationship" relationship="window.shadowedContentViewController" id="uSN-Tp-jMn"/>
+                    </connections>
+                </windowController>
+                <customObject id="n5I-mj-Nv0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="99" y="166"/>
+        </scene>
+        <!--Log View Controller-->
+        <scene sceneID="WMB-jY-v3I">
+            <objects>
+                <viewController storyboardIdentifier="LogViewController" id="haM-TG-2IE" customClass="LogViewController" customModule="BluetoothSecure" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Mdd-aJ-dnn">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="AO7-hi-sME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="275" y="524"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
