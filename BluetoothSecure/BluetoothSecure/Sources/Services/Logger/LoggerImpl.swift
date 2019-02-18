@@ -16,7 +16,7 @@ class Logger {
     
     for device in devices {
       let formatter = DateFormatter()
-      formatter.dateFormat = "dd.MM.yyyy"
+      formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
       let date = formatter.string(from: Date())
       resultString.append("Date: \(date)")
       
