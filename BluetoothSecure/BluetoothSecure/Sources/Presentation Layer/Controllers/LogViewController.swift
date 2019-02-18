@@ -38,7 +38,7 @@ class LogViewController: NSViewController {
       documentView.frame.size = CGSize(width: documentView.frame.width, height: documentView.frame.height + 20)
       documentView.addSubview(textField)
     }
-    // Because my document is not flipped, scroll makes to whole height
+    // Because my documentView is not flipped, scroll makes to whole height
     scrollView.documentView?.scroll(NSPoint(x: 0, y: documentView.bounds.size.height))
   }
 }
