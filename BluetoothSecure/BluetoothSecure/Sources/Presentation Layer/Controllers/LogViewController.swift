@@ -8,6 +8,10 @@
 
 import Cocoa
 
+class FlippedView: NSView {
+  override var isFlipped: Bool { return true }
+}
+
 class LogViewController: NSViewController {
   
   override func viewDidLoad() {
@@ -21,7 +25,7 @@ class LogViewController: NSViewController {
       return
     }
     var previousTextFieldFrame = CGRect(x: 10, y: 20, width: self.view.bounds.width - 20 * 2, height: 20)
-    let documentView = NSView(frame: previousTextFieldFrame)
+    let documentView = FlippedView(frame: previousTextFieldFrame)
     let scrollView = NSScrollView(frame: self.view.bounds)
     scrollView.documentView = documentView
     self.view.addSubview(scrollView)
@@ -38,7 +42,6 @@ class LogViewController: NSViewController {
       documentView.frame.size = CGSize(width: documentView.frame.width, height: documentView.frame.height + 20)
       documentView.addSubview(textField)
     }
-    // Because my documentView is not flipped, scroll makes to whole height
-    scrollView.documentView?.scroll(NSPoint(x: 0, y: documentView.bounds.size.height))
+    scrollView.documentView?.scroll(.zero)
   }
 }
