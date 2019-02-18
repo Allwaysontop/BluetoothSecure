@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		870908AC2218622800C97487 /* LoggerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870908AB2218622800C97487 /* LoggerImpl.swift */; };
 		870908AE221ACEE200C97487 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870908AD221ACEE200C97487 /* LogViewController.swift */; };
+		870908B0221AD14900C97487 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870908AF221AD14900C97487 /* Constants.swift */; };
 		8737C05821FBA49000A41DF3 /* BluetoothModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */; };
 		8737C05B21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */; };
 		8737C05D21FC7F6D00A41DF3 /* DatabaseServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		870908AB2218622800C97487 /* LoggerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerImpl.swift; sourceTree = "<group>"; };
 		870908AD221ACEE200C97487 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		870908AF221AD14900C97487 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8737C05721FBA49000A41DF3 /* BluetoothModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothModelImpl.swift; sourceTree = "<group>"; };
 		8737C05A21FC7F4F00A41DF3 /* DatabaseServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceImpl.swift; sourceTree = "<group>"; };
 		8737C05C21FC7F6D00A41DF3 /* DatabaseServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceType.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				870908AA2218621700C97487 /* Logger */,
+				870908AF221AD14900C97487 /* Constants.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				87FEAAF521FCB5EA00892AE4 /* BluetoothDevice+CoreDataProperties.swift in Sources */,
 				878544A321F26F1500B0918D /* ViewController.swift in Sources */,
 				878544A121F26F1500B0918D /* AppDelegate.swift in Sources */,
+				870908B0221AD14900C97487 /* Constants.swift in Sources */,
 				8737C05F21FCA4AE00A41DF3 /* DatabaseCore.swift in Sources */,
 				8737C05821FBA49000A41DF3 /* BluetoothModelImpl.swift in Sources */,
 				87FEAAF421FCB5EA00892AE4 /* BluetoothDevice+CoreDataClass.swift in Sources */,
