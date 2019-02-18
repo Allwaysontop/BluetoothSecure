@@ -113,13 +113,13 @@ class BluetoothModelImpl: BluetoothModelType {
       return
     }
     
-    Logger().writeToFile(Constants.Logger.fileName, devices: pairedDevices)
-    
     let connectedDevices = pairedDevices
       .filter({ $0.isConnected() })
       .map({ BluetoothDeviceEntity.init(bluetoothDeviceIO: $0) })
     
     let notTrustedDevices = Array(Set<BluetoothDeviceEntity>(connectedDevices).subtracting(Set(trustedDevices)))
+    
+    Logger().writeToFile(Constants.Logger.fileName, devices: pairedDevices)
     
     if !notTrustedDevices.isEmpty {
       delegate?.bluetoothNotifier(self, devices: notTrustedDevices)
