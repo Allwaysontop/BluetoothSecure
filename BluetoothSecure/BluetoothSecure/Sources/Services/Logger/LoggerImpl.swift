@@ -63,7 +63,7 @@ class Logger {
     }
   }
   
-  // MARK: - Privage
+  // MARK: - Private
   
   private func writeToFile(_ fileName: String, valueString: String) {
     guard let fileUrl = getFilePath(by: fileName) else {
@@ -72,7 +72,16 @@ class Logger {
     
     // write to it
     do {
-      try valueString.write(to: fileUrl, atomically: true, encoding: String.Encoding.utf8)
+      if FileManager.default.fileExists(atPath: fileUrl.path) {
+        let fileHandle = try FileHandle(forWritingTo: fileUrl)
+        fileHandle.seekToEndOfFile()
+        guard let stringData = valueString.data(using: .utf8) else {
+          return
+        }
+        fileHandle.write(stringData)
+      } else {
+        try valueString.write(to: fileUrl, atomically: true, encoding: .utf8)
+      }
     } catch {
       print(error.localizedDescription)
     }
