@@ -12,12 +12,33 @@ class LogViewController: NSViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    createLogView()
   }
   
   func createLogView() {
+    guard let results = Logger().readFromFile(Constants.Logger.fileName), !results.isEmpty else {
+      return
+    }
+    var previousTextFieldFrame = CGRect(x: 10, y: 20, width: self.view.bounds.width - 20 * 2, height: 20)
+    let documentView = NSView(frame: previousTextFieldFrame)
     let scrollView = NSScrollView(frame: self.view.bounds)
+    scrollView.documentView = documentView
     self.view.addSubview(scrollView)
     
-    
+    for item in results {
+      let textField = NSTextField(string: item)
+      textField.frame = CGRect(origin: CGPoint(x: previousTextFieldFrame.origin.x,
+                                               y: previousTextFieldFrame.origin.y + 20),
+                               size: previousTextFieldFrame.size)
+      previousTextFieldFrame = textField.frame
+      textField.isEditable = false
+      textField.drawsBackground = false
+      textField.isSelectable = false
+      documentView.frame.size = CGSize(width: documentView.frame.width, height: documentView.frame.height + 20)
+      documentView.addSubview(textField)
+    }
+    // Because my document is not flipped, scroll makes to whole height
+    scrollView.documentView?.scroll(NSPoint(x: 0, y: documentView.bounds.size.height))
   }
 }
